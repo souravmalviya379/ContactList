@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>
+      <%= title %>
+   </title>
+   <link rel="stylesheet" href="/css/home.css">
+   <script src="https://kit.fontawesome.com/cf3ddae05c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+   <main>
+      <h1><i class="fa-regular fa-address-book"></i> My Contact List</h1>
+      <ul id="contact-list">
+         <% for(let obj of contact_list){ %>
+            <li>
+               <p>
+                  <%= obj.name %>
+               </p>
+               <p>
+                  <%= obj.phone %>
+               </p>
+               <span class="delete-btn">
+                  <!-- <a href="/delete-contact?phone=<%= obj.phone %>" class="fa-solid fa-trash" style="text-decoration: none; color: rgb(128, 126, 126);"></a> -->
+                  <a href="/delete-contact?id=<%= obj._id %>" class="fa-solid fa-trash" style="text-decoration: none; color: rgb(128, 126, 126);"></a>
+
+               </span>
+            </li>
+         <% } %>
+      </ul>
+   </main>
+
+   <section>
+      <form action="/create-contact" method="POST">
+         <input type="text" name="name" placeholder="Enter name" required>
+         <input type="text" name="phone" placeholder="Enter contact no." required>
+         <button type="submit">Create Contact</button>
+      </form>
+   </section>
+
+   <script src="/js/home.js"></script>
+</body>
+
+</html>
